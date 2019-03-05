@@ -1,0 +1,204 @@
+C:\Users\Diego
+? mysqlsh
+MySQL Shell 8.0.13
+
+Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+
+
+ MySQL  JS > sql
+ReferenceError: sql is not defined
+
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 13
+Server version: 8.0.13 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| eva_1              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.0016 sec)
+
+ MySQL  localhost:3306 ssl  SQL > \use eva_1
+Default schema set to `eva_1`.
+Fetching table and column names from `eva_1` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > \use sakila
+Default schema set to `sakila`.
+Fetching table and column names from `sakila` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  sakila  SQL > show tables
+                                       -> ;
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
++----------------------------+
+23 rows in set (0.0041 sec)
+
+ MySQL  localhost:3306 ssl  sakila  SQL > \use eva_1
+Default schema set to `eva_1`.
+Fetching table and column names from `eva_1` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table Primer_Tabla(
+                                      -> id int
+                                      -> nombre varchar(50),
+                                      -> apellido varchar(50));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'nombre varchar(50),
+apellido varchar(50))' at line 3
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table Primer_Tabla( id int, nombre varchar(50), apellido varchar(50));
+Query OK, 0 rows affected (1.4884 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
++-----------------+
+| Tables_in_eva_1 |
++-----------------+
+| primer_tabla    |
++-----------------+
+1 row in set (0.0031 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > desc primer_tabla;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | int(11)     | YES  |     | NULL    |       |
+| nombre   | varchar(50) | YES  |     | NULL    |       |
+| apellido | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.0989 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > create temporary table tabla_temp(id int));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > create temporary table tabla_temp(
+                                      -> id int));
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 2
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > create temporary table tabla_temp(
+                                      -> id int
+                                      -> );
+Query OK, 0 rows affected (0.0770 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > desc tabla_temp;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| id    | int(11) | YES  |     | NULL    | NULL  |
++-------+---------+------+-----+---------+-------+
+1 row in set (0.0743 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL >
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 36
+Server version: 8.0.13 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+
+ MySQL  localhost:3306 ssl  SQL > \use eva_1
+Default schema set to `eva_1`.
+Fetching table and column names from `eva_1` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > desc tabla_temp;
+ERROR: 1146 (42S02): Table 'eva_1.tabla_temp' doesn't exist
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table copia_tabla like primer_tabla;
+Query OK, 0 rows affected (0.7527 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
++-----------------+
+| Tables_in_eva_1 |
++-----------------+
+| copia_tabla     |
+| primer_tabla    |
++-----------------+
+2 rows in set (0.0031 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > desc copia_tabla;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | int(11)     | YES  |     | NULL    |       |
+| nombre   | varchar(50) | YES  |     | NULL    |       |
+| apellido | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.0046 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > desc primer_tabla;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | int(11)     | YES  |     | NULL    |       |
+| nombre   | varchar(50) | YES  |     | NULL    |       |
+| apellido | varchar(50) | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.0030 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > create temporary table copia_tabla_temp like primer_tabla;
+Query OK, 0 rows affected (0.0577 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
++-----------------+
+| Tables_in_eva_1 |
++-----------------+
+| copia_tabla     |
+| primer_tabla    |
++-----------------+
+2 rows in set (0.0029 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > desc copia_tabla_temp;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| id       | int(11)     | YES  |     | NULL    | NULL  |
+| nombre   | varchar(50) | YES  |     | NULL    | NULL  |
+| apellido | varchar(50) | YES  |     | NULL    | NULL  |
++----------+-------------+------+-----+---------+-------+
+3 rows in set (0.0058 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL >

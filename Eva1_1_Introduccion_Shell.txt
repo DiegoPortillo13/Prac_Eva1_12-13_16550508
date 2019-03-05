@@ -1,0 +1,68 @@
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+
+ MySQL  SQL > \connect --mc root@localhost
+Creating a Classic session to 'root@localhost'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 54
+Server version: 8.0.13 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+
+ MySQL  localhost:3306 ssl  SQL > create database eva_1;
+Query OK, 1 row affected (0.1863 sec)
+
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| eva_1              |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+7 rows in set (0.0018 sec)
+
+ MySQL  localhost:3306 ssl  SQL > \use eva_1
+Default schema set to `eva_1`.
+Fetching table and column names from `eva_1` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
+Empty set (0.0027 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > create table primer_tabla(
+                                      -> campo int);
+Query OK, 0 rows affected (0.7300 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
++-----------------+
+| Tables_in_eva_1 |
++-----------------+
+| primer_tabla    |
++-----------------+
+1 row in set (0.0030 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > desc primer_tabla
+                                      ->
+                                      -> campo int
+                                      -> show tables;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int
+show tables' at line 2
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > desc primer_tabla;
++-------+---------+------+-----+---------+-------+
+| Field | Type    | Null | Key | Default | Extra |
++-------+---------+------+-----+---------+-------+
+| campo | int(11) | YES  |     | NULL    |       |
++-------+---------+------+-----+---------+-------+
+1 row in set (0.0041 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > drop table primer_tabla;
+Query OK, 0 rows affected (0.6122 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL > show tables;
+Empty set (0.0027 sec)
+
+ MySQL  localhost:3306 ssl  eva_1  SQL >
